@@ -19,6 +19,15 @@
 		<div class="col-md-8 col-lg-10" id="concejo2019vallecalivotos_dv_form">
 			<fieldset class="form-horizontal">
 
+				<!-- Field: PUESTO -->
+				<div class="form-group concejo2019vallecalivotos-PUESTO">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3" for="PUESTO" data-parent_link="view_parent_modal">PUESTO</label>
+					<div class="col-lg-9">
+						<div class="lookup-flex"><%%COMBO(PUESTO)%%><%%PLINK(PUESTO)%%><%%ADDNEW(divpol2022vallecali)%%></div>
+					</div>
+				</div>
+
 				<!-- Field: MESA  -->
 				<div class="form-group concejo2019vallecalivotos-MESA_">
 					<hr class="hidden-md hidden-lg">
@@ -68,7 +77,6 @@
 		</div>
 	</div>
 
-	<input type="hidden" name="PUESTO" value="<%%VALUE(PUESTO)%%>">
 	<input type="hidden" name="PARTIDO" value="<%%VALUE(PARTIDO)%%>">
 
 </div><!-- /div class="panel-body" -->
@@ -89,9 +97,27 @@
 			/* enable DV action buttons to float on scrolling down the form */
 			enable_dvab_floating();
 
-			$j('#concejo2019vallecalivotos_dv_container-loading').addClass('hidden');
-			$j('#concejo2019vallecalivotos_dv_container').removeClass('hidden');
-			if(!$j('.table_view').length || $j('[name=SelectedID]').val().length) AppGini.focusFormElement('concejo2019vallecalivotos', 'MESA_');
+			if(!$j('.table_view').length || $j('[name=SelectedID]').val().length) {
+				AppGini.once({
+					condition: function() {
+						return $j('.form-group.concejo2019vallecalivotos-PUESTO')
+									.find('.nicEdit-main, .select2-container, input[type=radio]')
+									.length > 0
+								// or read-only DV
+								|| (!$j('#update').length && !$j('#insert').length);
+					},
+					action: function() {
+						$j('#concejo2019vallecalivotos_dv_container-loading').addClass('hidden');
+						$j('#concejo2019vallecalivotos_dv_container').removeClass('hidden');
+						AppGini.focusFormElement('concejo2019vallecalivotos', 'PUESTO');
+					},
+					timeout:  5000,
+					doActionOnTimeout:  true
+				});
+			} else {
+				$j('#concejo2019vallecalivotos_dv_container-loading').addClass('hidden');
+				$j('#concejo2019vallecalivotos_dv_container').removeClass('hidden');
+			}
 
 			$j('form').eq(0).change(function() {
 				if($j(this).data('already_changed')) return;

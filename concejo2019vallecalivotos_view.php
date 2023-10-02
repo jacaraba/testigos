@@ -91,10 +91,10 @@
 	$x->TableIcon = 'table.gif';
 	$x->PrimaryKey = '`concejo2019vallecalivotos`.`CVOTOS`';
 
-	$x->ColWidth = [10, 10, 10, ];
-	$x->ColCaption = ['MESA ', 'CANDIDATO', 'VOTOS', ];
-	$x->ColFieldName = ['MESA_', 'CANDIDATO', 'VOTOS', ];
-	$x->ColNumber  = [5, 6, 7, ];
+	$x->ColWidth = [150, 10, 10, 10, ];
+	$x->ColCaption = ['PUESTO', 'MESA ', 'CANDIDATO', 'VOTOS', ];
+	$x->ColFieldName = ['PUESTO', 'MESA_', 'CANDIDATO', 'VOTOS', ];
+	$x->ColNumber  = [2, 5, 6, 7, ];
 
 	// template paths below are based on the app main directory
 	$x->Template = 'templates/concejo2019vallecalivotos_templateTV.html';

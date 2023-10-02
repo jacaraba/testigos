@@ -13,6 +13,7 @@ function concejo2019vallecalivotos_insert(&$error_message = '') {
 	if(!$arrPerm['insert']) return false;
 
 	$data = [
+		'PUESTO' => Request::lookup('PUESTO', ''),
 		'MESA_' => Request::val('MESA_', ''),
 		'CANDIDATO' => Request::val('CANDIDATO', ''),
 		'VOTOS' => Request::val('VOTOS', ''),
@@ -53,11 +54,6 @@ function concejo2019vallecalivotos_insert(&$error_message = '') {
 	}
 
 	$recID = $data['CVOTOS'];
-
-	// automatic PUESTO if passed as filterer
-	if(Request::val('filterer_PUESTO')) {
-		sql("UPDATE `concejo2019vallecalivotos` SET `PUESTO`='" . makeSafe(Request::val('filterer_PUESTO')) . "' WHERE `CVOTOS`='" . makeSafe($recID, false) . "'", $eo);
-	}
 
 	// automatic PARTIDO if passed as filterer
 	if(Request::val('filterer_PARTIDO')) {
@@ -136,6 +132,7 @@ function concejo2019vallecalivotos_update(&$selected_id, &$error_message = '') {
 	if(!check_record_permission('concejo2019vallecalivotos', $selected_id, 'edit')) return false;
 
 	$data = [
+		'PUESTO' => Request::lookup('PUESTO', ''),
 		'MESA_' => Request::val('MESA_', ''),
 		'CANDIDATO' => Request::val('CANDIDATO', ''),
 		'VOTOS' => Request::val('VOTOS', ''),
@@ -534,6 +531,8 @@ function concejo2019vallecalivotos_form($selected_id = '', $AllowUpdate = 1, $Al
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)) {
 		$jsReadOnly = '';
+		$jsReadOnly .= "\tjQuery('#PUESTO').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
+		$jsReadOnly .= "\tjQuery('#PUESTO_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#MESA_').replaceWith('<div class=\"form-control-static\" id=\"MESA_\">' + (jQuery('#MESA_').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#CANDIDATO').replaceWith('<div class=\"form-control-static\" id=\"CANDIDATO\">' + (jQuery('#CANDIDATO').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#VOTOS').replaceWith('<div class=\"form-control-static\" id=\"VOTOS\">' + (jQuery('#VOTOS').val() || '') + '</div>');\n";
@@ -604,8 +603,8 @@ function concejo2019vallecalivotos_form($selected_id = '', $AllowUpdate = 1, $Al
 	} else {
 		$templateCode = str_replace('<%%VALUE(CVOTOS)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(CVOTOS)%%>', urlencode(''), $templateCode);
-		$templateCode = str_replace('<%%VALUE(PUESTO)%%>', ( Request::val('FilterField')[1]=='2' && Request::val('FilterOperator')[1]=='<=>' ? $combo_PUESTO->SelectedData : ''), $templateCode);
-		$templateCode = str_replace('<%%URLVALUE(PUESTO)%%>', urlencode( Request::val('FilterField')[1]=='2' && Request::val('FilterOperator')[1]=='<=>' ? $combo_PUESTO->SelectedData : ''), $templateCode);
+		$templateCode = str_replace('<%%VALUE(PUESTO)%%>', '', $templateCode);
+		$templateCode = str_replace('<%%URLVALUE(PUESTO)%%>', urlencode(''), $templateCode);
 		$templateCode = str_replace('<%%VALUE(MESA)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(MESA)%%>', urlencode(''), $templateCode);
 		$templateCode = str_replace('<%%VALUE(PARTIDO)%%>', ( Request::val('FilterField')[1]=='4' && Request::val('FilterOperator')[1]=='<=>' ? $combo_PARTIDO->SelectedData : ''), $templateCode);
