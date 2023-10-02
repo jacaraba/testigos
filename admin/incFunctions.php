@@ -185,7 +185,7 @@
 					'Description' => '',
 					'tableIcon' => 'table.gif',
 					'group' => $tg[0],
-					'homepageShowCount' => 1
+					'homepageShowCount' => 0
 				],
 		];
 
