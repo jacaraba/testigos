@@ -1,7 +1,7 @@
 <?php
 	$dbServer = 'localhost';
-	$dbUsername = 'jacaraba';
-	$dbPassword = 'Timo2195';
+	$dbUsername = 'u392441939_e2023';
+	$dbPassword = 'Cara7120';
 	$dbDatabase = 'u392441939_e2023';
 	$dbPort = '3306';
 	$appURI = 'testigos';
