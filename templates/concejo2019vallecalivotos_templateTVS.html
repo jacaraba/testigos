@@ -1,0 +1,10 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the concejo2019vallecalivotos_init() hook (in hooks/concejo2019vallecalivotos.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="concejo2019vallecalivotos-MESA_-<%%VALUE(CVOTOS)%%>" class="concejo2019vallecalivotos-MESA_ text-right text-bold"><%%VALUE(MESA_)%%></td>
+		<td id="concejo2019vallecalivotos-CANDIDATO-<%%VALUE(CVOTOS)%%>" class="concejo2019vallecalivotos-CANDIDATO text-bold"><%%VALUE(CANDIDATO)%%></td>
+		<td id="concejo2019vallecalivotos-VOTOS-<%%VALUE(CVOTOS)%%>" class="concejo2019vallecalivotos-VOTOS text-bold"><%%VALUE(VOTOS)%%></td>

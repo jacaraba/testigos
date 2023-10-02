@@ -1,0 +1,13 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the testigos_init() hook (in hooks/testigos.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="testigos-PUESTO-<%%VALUE(CEDULA)%%>" class="testigos-PUESTO"><%%SELECT%%><%%VALUE(PUESTO)%%><%%ENDSELECT%%></td>
+		<td id="testigos-CEDULA-<%%VALUE(CEDULA)%%>" class="testigos-CEDULA"><%%SELECT%%><%%VALUE(CEDULA)%%><%%ENDSELECT%%></td>
+		<td id="testigos-NOMBRE-<%%VALUE(CEDULA)%%>" class="testigos-NOMBRE"><%%SELECT%%><%%VALUE(NOMBRE)%%><%%ENDSELECT%%></td>
+		<td id="testigos-CELULAR-<%%VALUE(CEDULA)%%>" class="testigos-CELULAR"><%%SELECT%%><%%VALUE(CELULAR)%%><%%ENDSELECT%%></td>
+		<td id="testigos-DIRECION-<%%VALUE(CEDULA)%%>" class="testigos-DIRECION"><%%SELECT%%><%%VALUE(DIRECION)%%><%%ENDSELECT%%></td>
+		<td id="testigos-CONTACTO-<%%VALUE(CEDULA)%%>" class="testigos-CONTACTO"><%%SELECT%%><%%VALUE(CONTACTO)%%><%%ENDSELECT%%></td>
