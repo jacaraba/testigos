@@ -75,7 +75,7 @@
 	$x->QuickSearch = 1;
 	$x->QuickSearchText = $Translation['quick search'];
 	$x->ScriptFileName = 'testigospuestos_view.php';
-	$x->TableTitle = 'Testigospuestos';
+	$x->TableTitle = 'Puestos';
 	$x->TableIcon = 'table.gif';
 	$x->PrimaryKey = '`testigospuestos`.`llave`';
 

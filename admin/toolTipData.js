@@ -192,40 +192,40 @@ testigos_delete2Tip=["",spacer+"This option allows each member of the group to d
 testigos_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Testigos' table."];
 
 // testigospuestos table
-testigospuestos_addTip=["",spacer+"This option allows all members of the group to add records to the 'Testigospuestos' table. A member who adds a record to the table becomes the 'owner' of that record."];
+testigospuestos_addTip=["",spacer+"This option allows all members of the group to add records to the 'Puestos' table. A member who adds a record to the table becomes the 'owner' of that record."];
 
-testigospuestos_view0Tip=["",spacer+"This option prohibits all members of the group from viewing any record in the 'Testigospuestos' table."];
-testigospuestos_view1Tip=["",spacer+"This option allows each member of the group to view only his own records in the 'Testigospuestos' table."];
-testigospuestos_view2Tip=["",spacer+"This option allows each member of the group to view any record owned by any member of the group in the 'Testigospuestos' table."];
-testigospuestos_view3Tip=["",spacer+"This option allows each member of the group to view all records in the 'Testigospuestos' table."];
+testigospuestos_view0Tip=["",spacer+"This option prohibits all members of the group from viewing any record in the 'Puestos' table."];
+testigospuestos_view1Tip=["",spacer+"This option allows each member of the group to view only his own records in the 'Puestos' table."];
+testigospuestos_view2Tip=["",spacer+"This option allows each member of the group to view any record owned by any member of the group in the 'Puestos' table."];
+testigospuestos_view3Tip=["",spacer+"This option allows each member of the group to view all records in the 'Puestos' table."];
 
-testigospuestos_edit0Tip=["",spacer+"This option prohibits all members of the group from modifying any record in the 'Testigospuestos' table."];
-testigospuestos_edit1Tip=["",spacer+"This option allows each member of the group to edit only his own records in the 'Testigospuestos' table."];
-testigospuestos_edit2Tip=["",spacer+"This option allows each member of the group to edit any record owned by any member of the group in the 'Testigospuestos' table."];
-testigospuestos_edit3Tip=["",spacer+"This option allows each member of the group to edit any records in the 'Testigospuestos' table, regardless of their owner."];
+testigospuestos_edit0Tip=["",spacer+"This option prohibits all members of the group from modifying any record in the 'Puestos' table."];
+testigospuestos_edit1Tip=["",spacer+"This option allows each member of the group to edit only his own records in the 'Puestos' table."];
+testigospuestos_edit2Tip=["",spacer+"This option allows each member of the group to edit any record owned by any member of the group in the 'Puestos' table."];
+testigospuestos_edit3Tip=["",spacer+"This option allows each member of the group to edit any records in the 'Puestos' table, regardless of their owner."];
 
-testigospuestos_delete0Tip=["",spacer+"This option prohibits all members of the group from deleting any record in the 'Testigospuestos' table."];
-testigospuestos_delete1Tip=["",spacer+"This option allows each member of the group to delete only his own records in the 'Testigospuestos' table."];
-testigospuestos_delete2Tip=["",spacer+"This option allows each member of the group to delete any record owned by any member of the group in the 'Testigospuestos' table."];
-testigospuestos_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Testigospuestos' table."];
+testigospuestos_delete0Tip=["",spacer+"This option prohibits all members of the group from deleting any record in the 'Puestos' table."];
+testigospuestos_delete1Tip=["",spacer+"This option allows each member of the group to delete only his own records in the 'Puestos' table."];
+testigospuestos_delete2Tip=["",spacer+"This option allows each member of the group to delete any record owned by any member of the group in the 'Puestos' table."];
+testigospuestos_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Puestos' table."];
 
 // concejo2019vallecalivotos table
-concejo2019vallecalivotos_addTip=["",spacer+"This option allows all members of the group to add records to the 'Concejo2019vallecalivotos' table. A member who adds a record to the table becomes the 'owner' of that record."];
+concejo2019vallecalivotos_addTip=["",spacer+"This option allows all members of the group to add records to the 'Concejo' table. A member who adds a record to the table becomes the 'owner' of that record."];
 
-concejo2019vallecalivotos_view0Tip=["",spacer+"This option prohibits all members of the group from viewing any record in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_view1Tip=["",spacer+"This option allows each member of the group to view only his own records in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_view2Tip=["",spacer+"This option allows each member of the group to view any record owned by any member of the group in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_view3Tip=["",spacer+"This option allows each member of the group to view all records in the 'Concejo2019vallecalivotos' table."];
+concejo2019vallecalivotos_view0Tip=["",spacer+"This option prohibits all members of the group from viewing any record in the 'Concejo' table."];
+concejo2019vallecalivotos_view1Tip=["",spacer+"This option allows each member of the group to view only his own records in the 'Concejo' table."];
+concejo2019vallecalivotos_view2Tip=["",spacer+"This option allows each member of the group to view any record owned by any member of the group in the 'Concejo' table."];
+concejo2019vallecalivotos_view3Tip=["",spacer+"This option allows each member of the group to view all records in the 'Concejo' table."];
 
-concejo2019vallecalivotos_edit0Tip=["",spacer+"This option prohibits all members of the group from modifying any record in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_edit1Tip=["",spacer+"This option allows each member of the group to edit only his own records in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_edit2Tip=["",spacer+"This option allows each member of the group to edit any record owned by any member of the group in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_edit3Tip=["",spacer+"This option allows each member of the group to edit any records in the 'Concejo2019vallecalivotos' table, regardless of their owner."];
+concejo2019vallecalivotos_edit0Tip=["",spacer+"This option prohibits all members of the group from modifying any record in the 'Concejo' table."];
+concejo2019vallecalivotos_edit1Tip=["",spacer+"This option allows each member of the group to edit only his own records in the 'Concejo' table."];
+concejo2019vallecalivotos_edit2Tip=["",spacer+"This option allows each member of the group to edit any record owned by any member of the group in the 'Concejo' table."];
+concejo2019vallecalivotos_edit3Tip=["",spacer+"This option allows each member of the group to edit any records in the 'Concejo' table, regardless of their owner."];
 
-concejo2019vallecalivotos_delete0Tip=["",spacer+"This option prohibits all members of the group from deleting any record in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_delete1Tip=["",spacer+"This option allows each member of the group to delete only his own records in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_delete2Tip=["",spacer+"This option allows each member of the group to delete any record owned by any member of the group in the 'Concejo2019vallecalivotos' table."];
-concejo2019vallecalivotos_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Concejo2019vallecalivotos' table."];
+concejo2019vallecalivotos_delete0Tip=["",spacer+"This option prohibits all members of the group from deleting any record in the 'Concejo' table."];
+concejo2019vallecalivotos_delete1Tip=["",spacer+"This option allows each member of the group to delete only his own records in the 'Concejo' table."];
+concejo2019vallecalivotos_delete2Tip=["",spacer+"This option allows each member of the group to delete any record owned by any member of the group in the 'Concejo' table."];
+concejo2019vallecalivotos_delete3Tip=["",spacer+"This option allows each member of the group to delete any records in the 'Concejo' table."];
 
 /*
 	Style syntax:

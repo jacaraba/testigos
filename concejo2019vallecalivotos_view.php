@@ -87,7 +87,7 @@
 	$x->QuickSearch = 1;
 	$x->QuickSearchText = $Translation['quick search'];
 	$x->ScriptFileName = 'concejo2019vallecalivotos_view.php';
-	$x->TableTitle = 'Concejo2019vallecalivotos';
+	$x->TableTitle = 'Concejo';
 	$x->TableIcon = 'table.gif';
 	$x->PrimaryKey = '`concejo2019vallecalivotos`.`CVOTOS`';
 

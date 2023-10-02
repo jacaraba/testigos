@@ -168,21 +168,21 @@
 				],
 				'testigos' => [
 					'Caption' => 'Testigos',
-					'Description' => 'Table imported using MySQL2AppGini on 2023-10-02',
+					'Description' => '',
 					'tableIcon' => 'table.gif',
 					'group' => $tg[0],
 					'homepageShowCount' => 0
 				],
 				'testigospuestos' => [
-					'Caption' => 'Testigospuestos',
-					'Description' => 'Table imported using MySQL2AppGini on 2023-10-02',
+					'Caption' => 'Puestos',
+					'Description' => 'Testigos en el Puesto',
 					'tableIcon' => 'table.gif',
 					'group' => $tg[0],
 					'homepageShowCount' => 0
 				],
 				'concejo2019vallecalivotos' => [
-					'Caption' => 'Concejo2019vallecalivotos',
-					'Description' => 'Table imported using MySQL2AppGini on 2023-10-02',
+					'Caption' => 'Concejo',
+					'Description' => '',
 					'tableIcon' => 'table.gif',
 					'group' => $tg[0],
 					'homepageShowCount' => 1
@@ -212,9 +212,9 @@
 			'numeros' => ['Numeros', 'Table imported using MySQL2AppGini on 2023-10-02', 'table.gif', 'None'],
 			'partidos2019' => ['Partidos2019', 'Table imported using MySQL2AppGini on 2023-10-02', 'table.gif', 'None'],
 			'partidos2022' => ['Partidos2022', 'Table imported using MySQL2AppGini on 2023-10-02', 'table.gif', 'None'],
-			'testigos' => ['Testigos', 'Table imported using MySQL2AppGini on 2023-10-02', 'table.gif', 'None'],
-			'testigospuestos' => ['Testigospuestos', 'Table imported using MySQL2AppGini on 2023-10-02', 'table.gif', 'None'],
-			'concejo2019vallecalivotos' => ['Concejo2019vallecalivotos', 'Table imported using MySQL2AppGini on 2023-10-02', 'table.gif', 'None'],
+			'testigos' => ['Testigos', '', 'table.gif', 'None'],
+			'testigospuestos' => ['Puestos', 'Testigos en el Puesto', 'table.gif', 'None'],
+			'concejo2019vallecalivotos' => ['Concejo', '', 'table.gif', 'None'],
 		];
 		if($skip_authentication || getLoggedAdmin()) return $arrTables;
 
