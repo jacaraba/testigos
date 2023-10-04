@@ -18,7 +18,7 @@
 
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV = [
-		"`testigos`.`PUESTO`" => "PUESTO",
+		"IF(    CHAR_LENGTH(`divpol2022vallecali1`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali1`.`nompue`), CONCAT_WS('',   `divpol2022vallecali1`.`PUESTO`, ' - ', `divpol2022vallecali1`.`nompue`), '') /* PUESTO */" => "PUESTO",
 		"`testigos`.`CEDULA`" => "CEDULA",
 		"`testigos`.`NOMBRE`" => "NOMBRE",
 		"`testigos`.`CELULAR`" => "CELULAR",
@@ -37,7 +37,7 @@
 
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV = [
-		"`testigos`.`PUESTO`" => "PUESTO",
+		"IF(    CHAR_LENGTH(`divpol2022vallecali1`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali1`.`nompue`), CONCAT_WS('',   `divpol2022vallecali1`.`PUESTO`, ' - ', `divpol2022vallecali1`.`nompue`), '') /* PUESTO */" => "PUESTO",
 		"`testigos`.`CEDULA`" => "CEDULA",
 		"`testigos`.`NOMBRE`" => "NOMBRE",
 		"`testigos`.`CELULAR`" => "CELULAR",
@@ -46,7 +46,7 @@
 	];
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = [
-		"`testigos`.`PUESTO`" => "PUESTO",
+		"IF(    CHAR_LENGTH(`divpol2022vallecali1`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali1`.`nompue`), CONCAT_WS('',   `divpol2022vallecali1`.`PUESTO`, ' - ', `divpol2022vallecali1`.`nompue`), '') /* PUESTO */" => "PUESTO",
 		"`testigos`.`CEDULA`" => "CEDULA",
 		"`testigos`.`NOMBRE`" => "NOMBRE",
 		"`testigos`.`CELULAR`" => "CELULAR",
@@ -56,7 +56,7 @@
 
 	// Fields that can be quick searched
 	$x->QueryFieldsQS = [
-		"`testigos`.`PUESTO`" => "PUESTO",
+		"IF(    CHAR_LENGTH(`divpol2022vallecali1`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali1`.`nompue`), CONCAT_WS('',   `divpol2022vallecali1`.`PUESTO`, ' - ', `divpol2022vallecali1`.`nompue`), '') /* PUESTO */" => "PUESTO",
 		"`testigos`.`CEDULA`" => "CEDULA",
 		"`testigos`.`NOMBRE`" => "NOMBRE",
 		"`testigos`.`CELULAR`" => "CELULAR",
@@ -65,9 +65,9 @@
 	];
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = [];
+	$x->filterers = ['PUESTO' => 'PUESTO', ];
 
-	$x->QueryFrom = "`testigos` ";
+	$x->QueryFrom = "`testigos` LEFT JOIN `divpol2022vallecali` as divpol2022vallecali1 ON `divpol2022vallecali1`.`PUESTO`=`testigos`.`PUESTO` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 

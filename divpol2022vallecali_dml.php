@@ -109,6 +109,25 @@ function divpol2022vallecali_delete($selected_id, $AllowDeleteOfParents = false,
 			);
 	}
 
+	// child table: testigos
+	$res = sql("SELECT `PUESTO` FROM `divpol2022vallecali` WHERE `PUESTO`='{$selected_id}'", $eo);
+	$PUESTO = db_fetch_row($res);
+	$rires = sql("SELECT COUNT(1) FROM `testigos` WHERE `PUESTO`='" . makeSafe($PUESTO[0]) . "'", $eo);
+	$rirow = db_fetch_row($rires);
+	if($rirow[0] && !$AllowDeleteOfParents && !$skipChecks) {
+		$RetMsg = $Translation["couldn't delete"];
+		$RetMsg = str_replace('<RelatedRecords>', $rirow[0], $RetMsg);
+		$RetMsg = str_replace('<TableName>', 'testigos', $RetMsg);
+		return $RetMsg;
+	} elseif($rirow[0] && $AllowDeleteOfParents && !$skipChecks) {
+		$RetMsg = $Translation['confirm delete'];
+		$RetMsg = str_replace('<RelatedRecords>', $rirow[0], $RetMsg);
+		$RetMsg = str_replace('<TableName>', 'testigos', $RetMsg);
+		$RetMsg = str_replace('<Delete>', '<input type="button" class="btn btn-danger" value="' . html_attr($Translation['yes']) . '" onClick="window.location = \'divpol2022vallecali_view.php?SelectedID=' . urlencode($selected_id) . '&delete_x=1&confirmed=1&csrf_token=' . urlencode(csrf_token(false, true)) . '\';">', $RetMsg);
+		$RetMsg = str_replace('<Cancel>', '<input type="button" class="btn btn-success" value="' . html_attr($Translation[ 'no']) . '" onClick="window.location = \'divpol2022vallecali_view.php?SelectedID=' . urlencode($selected_id) . '\';">', $RetMsg);
+		return $RetMsg;
+	}
+
 	// child table: testigospuestos
 	$res = sql("SELECT `PUESTO` FROM `divpol2022vallecali` WHERE `PUESTO`='{$selected_id}'", $eo);
 	$PUESTO = db_fetch_row($res);

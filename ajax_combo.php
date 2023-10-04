@@ -51,15 +51,26 @@
 		'partidos2022' => [
 		],
 		'testigos' => [
+			'PUESTO' => [
+				'parent_table' => 'divpol2022vallecali',
+				'parent_pk_field' => 'PUESTO',
+				'parent_caption' => 'IF(CHAR_LENGTH(`divpol2022vallecali`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali`.`nompue`), CONCAT_WS(\'\', `divpol2022vallecali`.`PUESTO`, \' - \', `divpol2022vallecali`.`nompue`), \'\')',
+				'parent_from' => '`divpol2022vallecali` ',
+				'filterers' => [],
+				'custom_query' => 'SELECT `divpol2022vallecali`.`PUESTO`, IF(CHAR_LENGTH(`divpol2022vallecali`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali`.`nompue`), CONCAT_WS(\'\', `divpol2022vallecali`.`PUESTO`, \' - \', `divpol2022vallecali`.`nompue`), \'\') FROM `divpol2022vallecali` ORDER BY 2',
+				'inherit_permissions' => false,
+				'list_type' => 0,
+				'not_null' => false,
+			],
 		],
 		'testigospuestos' => [
 			'CEDULA' => [
 				'parent_table' => 'testigos',
 				'parent_pk_field' => 'CEDULA',
 				'parent_caption' => 'IF(CHAR_LENGTH(`testigos`.`CEDULA`) || CHAR_LENGTH(`testigos`.`NOMBRE`), CONCAT_WS(\'\', `testigos`.`CEDULA`, \' - \', `testigos`.`NOMBRE`), \'\')',
-				'parent_from' => '`testigos` ',
+				'parent_from' => '`testigos` LEFT JOIN `divpol2022vallecali` as divpol2022vallecali1 ON `divpol2022vallecali1`.`PUESTO`=`testigos`.`PUESTO` ',
 				'filterers' => [],
-				'custom_query' => 'SELECT `testigos`.`CEDULA`, IF(CHAR_LENGTH(`testigos`.`CEDULA`) || CHAR_LENGTH(`testigos`.`NOMBRE`), CONCAT_WS(\'\', `testigos`.`CEDULA`, \' - \', `testigos`.`NOMBRE`), \'\') FROM `testigos` ORDER BY 2',
+				'custom_query' => 'SELECT `testigos`.`CEDULA`, IF(CHAR_LENGTH(`testigos`.`CEDULA`) || CHAR_LENGTH(`testigos`.`NOMBRE`), CONCAT_WS(\'\', `testigos`.`CEDULA`, \' - \', `testigos`.`NOMBRE`), \'\') FROM `testigos` LEFT JOIN `divpol2022vallecali` as divpol2022vallecali1 ON `divpol2022vallecali1`.`PUESTO`=`testigos`.`PUESTO` ORDER BY 2',
 				'inherit_permissions' => false,
 				'list_type' => 0,
 				'not_null' => false,

@@ -2590,6 +2590,9 @@
 		 *             'parent table' => [main lookup fields in child]
 		 */
 		$parents = [
+			'testigos' => [
+				'divpol2022vallecali' => ['PUESTO'],
+			],
 			'testigospuestos' => [
 				'testigos' => ['CEDULA'],
 				'divpol2022vallecali' => ['PUESTO'],
@@ -2783,9 +2786,10 @@
 			'partidos2022' => [
 			],
 			'testigos' => [
+				'PUESTO' => 'SELECT `divpol2022vallecali`.`PUESTO`, IF(CHAR_LENGTH(`divpol2022vallecali`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali`.`nompue`), CONCAT_WS(\'\', `divpol2022vallecali`.`PUESTO`, \' - \', `divpol2022vallecali`.`nompue`), \'\') FROM `divpol2022vallecali` ORDER BY 2',
 			],
 			'testigospuestos' => [
-				'CEDULA' => 'SELECT `testigos`.`CEDULA`, IF(CHAR_LENGTH(`testigos`.`CEDULA`) || CHAR_LENGTH(`testigos`.`NOMBRE`), CONCAT_WS(\'\', `testigos`.`CEDULA`, \' - \', `testigos`.`NOMBRE`), \'\') FROM `testigos` ORDER BY 2',
+				'CEDULA' => 'SELECT `testigos`.`CEDULA`, IF(CHAR_LENGTH(`testigos`.`CEDULA`) || CHAR_LENGTH(`testigos`.`NOMBRE`), CONCAT_WS(\'\', `testigos`.`CEDULA`, \' - \', `testigos`.`NOMBRE`), \'\') FROM `testigos` LEFT JOIN `divpol2022vallecali` as divpol2022vallecali1 ON `divpol2022vallecali1`.`PUESTO`=`testigos`.`PUESTO` ORDER BY 2',
 				'PUESTO' => 'SELECT `divpol2022vallecali`.`PUESTO`, IF(CHAR_LENGTH(`divpol2022vallecali`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali`.`nompue`), CONCAT_WS(\'\', `divpol2022vallecali`.`PUESTO`, \' - \', `divpol2022vallecali`.`nompue`), \'\') FROM `divpol2022vallecali` ORDER BY 2',
 			],
 			'concejo2019vallecalivotos' => [

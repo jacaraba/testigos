@@ -144,6 +144,7 @@
 				`CONTACTO` VARCHAR(10) NULL
 			) CHARSET utf8mb4"
 		);
+		setupIndexes('testigos', ['PUESTO',]);
 
 		setupTable(
 			'testigospuestos', " 

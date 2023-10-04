@@ -115,7 +115,7 @@
 			'numeros' => "`numeros`.`curul` as 'curul'",
 			'partidos2019' => "`partidos2019`.`partido` as 'partido', `partidos2019`.`nompartido` as 'nompartido'",
 			'partidos2022' => "`partidos2022`.`partido` as 'partido', `partidos2022`.`nompartido` as 'nompartido'",
-			'testigos' => "`testigos`.`PUESTO` as 'PUESTO', `testigos`.`CEDULA` as 'CEDULA', `testigos`.`NOMBRE` as 'NOMBRE', `testigos`.`CELULAR` as 'CELULAR', `testigos`.`DIRECION` as 'DIRECION', `testigos`.`CONTACTO` as 'CONTACTO'",
+			'testigos' => "IF(    CHAR_LENGTH(`divpol2022vallecali1`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali1`.`nompue`), CONCAT_WS('',   `divpol2022vallecali1`.`PUESTO`, ' - ', `divpol2022vallecali1`.`nompue`), '') as 'PUESTO', `testigos`.`CEDULA` as 'CEDULA', `testigos`.`NOMBRE` as 'NOMBRE', `testigos`.`CELULAR` as 'CELULAR', `testigos`.`DIRECION` as 'DIRECION', `testigos`.`CONTACTO` as 'CONTACTO'",
 			'testigospuestos' => "`testigospuestos`.`llave` as 'llave', IF(    CHAR_LENGTH(`testigos1`.`CEDULA`) || CHAR_LENGTH(`testigos1`.`NOMBRE`), CONCAT_WS('',   `testigos1`.`CEDULA`, ' - ', `testigos1`.`NOMBRE`), '') as 'CEDULA', IF(    CHAR_LENGTH(`divpol2022vallecali1`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali1`.`nompue`), CONCAT_WS('',   `divpol2022vallecali1`.`PUESTO`, ' - ', `divpol2022vallecali1`.`nompue`), '') as 'PUESTO'",
 			'concejo2019vallecalivotos' => "`concejo2019vallecalivotos`.`CVOTOS` as 'CVOTOS', IF(    CHAR_LENGTH(`divpol2022vallecali1`.`PUESTO`) || CHAR_LENGTH(`divpol2022vallecali1`.`nompue`), CONCAT_WS('',   `divpol2022vallecali1`.`PUESTO`, ' - ', `divpol2022vallecali1`.`nompue`), '') as 'PUESTO', `concejo2019vallecalivotos`.`MESA` as 'MESA', IF(    CHAR_LENGTH(`partidos20221`.`partido`) || CHAR_LENGTH(`partidos20221`.`nompartido`), CONCAT_WS('',   `partidos20221`.`partido`, ' - ', `partidos20221`.`nompartido`), '') as 'PARTIDO', `concejo2019vallecalivotos`.`MESA_` as 'MESA_', `concejo2019vallecalivotos`.`CANDIDATO` as 'CANDIDATO', FORMAT(`concejo2019vallecalivotos`.`VOTOS`, 0) as 'VOTOS'",
 		];
@@ -138,7 +138,7 @@
 			'numeros' => "`numeros` ",
 			'partidos2019' => "`partidos2019` ",
 			'partidos2022' => "`partidos2022` ",
-			'testigos' => "`testigos` ",
+			'testigos' => "`testigos` LEFT JOIN `divpol2022vallecali` as divpol2022vallecali1 ON `divpol2022vallecali1`.`PUESTO`=`testigos`.`PUESTO` ",
 			'testigospuestos' => "`testigospuestos` LEFT JOIN `testigos` as testigos1 ON `testigos1`.`CEDULA`=`testigospuestos`.`CEDULA` LEFT JOIN `divpol2022vallecali` as divpol2022vallecali1 ON `divpol2022vallecali1`.`PUESTO`=`testigospuestos`.`PUESTO` ",
 			'concejo2019vallecalivotos' => "`concejo2019vallecalivotos` LEFT JOIN `divpol2022vallecali` as divpol2022vallecali1 ON `divpol2022vallecali1`.`PUESTO`=`concejo2019vallecalivotos`.`PUESTO` LEFT JOIN `partidos2022` as partidos20221 ON `partidos20221`.`partido`=`concejo2019vallecalivotos`.`PARTIDO` ",
 		];

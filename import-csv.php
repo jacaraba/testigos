@@ -41,6 +41,7 @@
 			return $data;
 		},
 		'testigos' => function($data, $options = []) {
+			if(isset($data['PUESTO'])) $data['PUESTO'] = pkGivenLookupText($data['PUESTO'], 'testigos', 'PUESTO');
 
 			return $data;
 		},

@@ -13,7 +13,7 @@ function testigos_insert(&$error_message = '') {
 	if(!$arrPerm['insert']) return false;
 
 	$data = [
-		'PUESTO' => Request::val('PUESTO', ''),
+		'PUESTO' => Request::lookup('PUESTO', ''),
 		'CEDULA' => Request::val('CEDULA', ''),
 		'NOMBRE' => Request::val('NOMBRE', ''),
 		'CELULAR' => Request::val('CELULAR', ''),
@@ -138,7 +138,7 @@ function testigos_update(&$selected_id, &$error_message = '') {
 	if(!check_record_permission('testigos', $selected_id, 'edit')) return false;
 
 	$data = [
-		'PUESTO' => Request::val('PUESTO', ''),
+		'PUESTO' => Request::lookup('PUESTO', ''),
 		'CEDULA' => Request::val('CEDULA', ''),
 		'NOMBRE' => Request::val('NOMBRE', ''),
 		'CELULAR' => Request::val('CELULAR', ''),
@@ -235,11 +235,14 @@ function testigos_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		$dvprint = true;
 	}
 
+	$filterer_PUESTO = Request::val('filterer_PUESTO');
 
 	// populate filterers, starting from children to grand-parents
 
 	// unique random identifier
 	$rnd1 = ($dvprint ? rand(1000000, 9999999) : '');
+	// combobox: PUESTO
+	$combo_PUESTO = new DataCombo;
 
 	if($selected_id) {
 		if(!check_record_permission('testigos', $selected_id, 'view'))
@@ -255,13 +258,112 @@ function testigos_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		if(!($row = db_fetch_array($res))) {
 			return error_message($Translation['No records found'], 'testigos_view.php', false);
 		}
+		$combo_PUESTO->SelectedData = $row['PUESTO'];
 		$urow = $row; /* unsanitized data */
 		$row = array_map('safe_html', $row);
 	} else {
 		$filterField = Request::val('FilterField');
 		$filterOperator = Request::val('FilterOperator');
 		$filterValue = Request::val('FilterValue');
+		$combo_PUESTO->SelectedData = $filterer_PUESTO;
 	}
+	$combo_PUESTO->HTML = '<span id="PUESTO-container' . $rnd1 . '"></span><input type="hidden" name="PUESTO" id="PUESTO' . $rnd1 . '" value="' . html_attr($combo_PUESTO->SelectedData) . '">';
+	$combo_PUESTO->MatchText = '<span id="PUESTO-container-readonly' . $rnd1 . '"></span><input type="hidden" name="PUESTO" id="PUESTO' . $rnd1 . '" value="' . html_attr($combo_PUESTO->SelectedData) . '">';
+
+	ob_start();
+	?>
+
+	<script>
+		// initial lookup values
+		AppGini.current_PUESTO__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['PUESTO'] : htmlspecialchars($filterer_PUESTO, ENT_QUOTES)); ?>"};
+
+		jQuery(function() {
+			setTimeout(function() {
+				if(typeof(PUESTO_reload__RAND__) == 'function') PUESTO_reload__RAND__();
+			}, 50); /* we need to slightly delay client-side execution of the above code to allow AppGini.ajaxCache to work */
+		});
+		function PUESTO_reload__RAND__() {
+		<?php if(($AllowUpdate || $AllowInsert) && !$dvprint) { ?>
+
+			$j("#PUESTO-container__RAND__").select2({
+				/* initial default value */
+				initSelection: function(e, c) {
+					$j.ajax({
+						url: 'ajax_combo.php',
+						dataType: 'json',
+						data: { id: AppGini.current_PUESTO__RAND__.value, t: 'testigos', f: 'PUESTO' },
+						success: function(resp) {
+							c({
+								id: resp.results[0].id,
+								text: resp.results[0].text
+							});
+							$j('[name="PUESTO"]').val(resp.results[0].id);
+							$j('[id=PUESTO-container-readonly__RAND__]').html('<span class="match-text" id="PUESTO-match-text">' + resp.results[0].text + '</span>');
+							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=divpol2022vallecali_view_parent]').hide(); } else { $j('.btn[id=divpol2022vallecali_view_parent]').show(); }
+
+
+							if(typeof(PUESTO_update_autofills__RAND__) == 'function') PUESTO_update_autofills__RAND__();
+						}
+					});
+				},
+				width: '100%',
+				formatNoMatches: function(term) { return '<?php echo addslashes($Translation['No matches found!']); ?>'; },
+				minimumResultsForSearch: 5,
+				loadMorePadding: 200,
+				ajax: {
+					url: 'ajax_combo.php',
+					dataType: 'json',
+					cache: true,
+					data: function(term, page) { return { s: term, p: page, t: 'testigos', f: 'PUESTO' }; },
+					results: function(resp, page) { return resp; }
+				},
+				escapeMarkup: function(str) { return str; }
+			}).on('change', function(e) {
+				AppGini.current_PUESTO__RAND__.value = e.added.id;
+				AppGini.current_PUESTO__RAND__.text = e.added.text;
+				$j('[name="PUESTO"]').val(e.added.id);
+				if(e.added.id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=divpol2022vallecali_view_parent]').hide(); } else { $j('.btn[id=divpol2022vallecali_view_parent]').show(); }
+
+
+				if(typeof(PUESTO_update_autofills__RAND__) == 'function') PUESTO_update_autofills__RAND__();
+			});
+
+			if(!$j("#PUESTO-container__RAND__").length) {
+				$j.ajax({
+					url: 'ajax_combo.php',
+					dataType: 'json',
+					data: { id: AppGini.current_PUESTO__RAND__.value, t: 'testigos', f: 'PUESTO' },
+					success: function(resp) {
+						$j('[name="PUESTO"]').val(resp.results[0].id);
+						$j('[id=PUESTO-container-readonly__RAND__]').html('<span class="match-text" id="PUESTO-match-text">' + resp.results[0].text + '</span>');
+						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=divpol2022vallecali_view_parent]').hide(); } else { $j('.btn[id=divpol2022vallecali_view_parent]').show(); }
+
+						if(typeof(PUESTO_update_autofills__RAND__) == 'function') PUESTO_update_autofills__RAND__();
+					}
+				});
+			}
+
+		<?php } else { ?>
+
+			$j.ajax({
+				url: 'ajax_combo.php',
+				dataType: 'json',
+				data: { id: AppGini.current_PUESTO__RAND__.value, t: 'testigos', f: 'PUESTO' },
+				success: function(resp) {
+					$j('[id=PUESTO-container__RAND__], [id=PUESTO-container-readonly__RAND__]').html('<span class="match-text" id="PUESTO-match-text">' + resp.results[0].text + '</span>');
+					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=divpol2022vallecali_view_parent]').hide(); } else { $j('.btn[id=divpol2022vallecali_view_parent]').show(); }
+
+					if(typeof(PUESTO_update_autofills__RAND__) == 'function') PUESTO_update_autofills__RAND__();
+				}
+			});
+		<?php } ?>
+
+		}
+	</script>
+	<?php
+
+	$lookups = str_replace('__RAND__', $rnd1, ob_get_clean());
+
 
 	// code for template based detail view forms
 
@@ -341,7 +443,8 @@ function testigos_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)) {
 		$jsReadOnly = '';
-		$jsReadOnly .= "\tjQuery('#PUESTO').replaceWith('<div class=\"form-control-static\" id=\"PUESTO\">' + (jQuery('#PUESTO').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#PUESTO').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
+		$jsReadOnly .= "\tjQuery('#PUESTO_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#CEDULA').replaceWith('<div class=\"form-control-static\" id=\"CEDULA\">' + (jQuery('#CEDULA').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#NOMBRE').replaceWith('<div class=\"form-control-static\" id=\"NOMBRE\">' + (jQuery('#NOMBRE').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#CELULAR').replaceWith('<div class=\"form-control-static\" id=\"CELULAR\">' + (jQuery('#CELULAR').val() || '') + '</div>');\n";
@@ -356,9 +459,12 @@ function testigos_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	}
 
 	// process combos
+	$templateCode = str_replace('<%%COMBO(PUESTO)%%>', $combo_PUESTO->HTML, $templateCode);
+	$templateCode = str_replace('<%%COMBOTEXT(PUESTO)%%>', $combo_PUESTO->MatchText, $templateCode);
+	$templateCode = str_replace('<%%URLCOMBOTEXT(PUESTO)%%>', urlencode($combo_PUESTO->MatchText), $templateCode);
 
 	/* lookup fields array: 'lookup field name' => ['parent table name', 'lookup field caption'] */
-	$lookup_fields = [];
+	$lookup_fields = ['PUESTO' => ['divpol2022vallecali', 'PUESTO'], ];
 	foreach($lookup_fields as $luf => $ptfc) {
 		$pt_perm = getTablePermissions($ptfc[0]);
 
