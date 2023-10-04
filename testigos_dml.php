@@ -368,13 +368,8 @@ function testigos_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	// code for template based detail view forms
 
 	// open the detail view template
-	if($dvprint) {
-		$template_file = is_file("./{$TemplateDVP}") ? "./{$TemplateDVP}" : './templates/testigos_templateDVP.html';
-		$templateCode = @file_get_contents($template_file);
-	} else {
-		$template_file = is_file("./{$TemplateDV}") ? "./{$TemplateDV}" : './templates/testigos_templateDV.html';
-		$templateCode = @file_get_contents($template_file);
-	}
+	$template_file = is_file("./{$TemplateDV}") ? "./{$TemplateDV}" : './templates/testigos_templateDV.html';
+	$templateCode = @file_get_contents($template_file);
 
 	// process form title
 	$templateCode = str_replace('<%%DETAIL_VIEW_TITLE%%>', 'Detail View', $templateCode);
@@ -396,7 +391,6 @@ function testigos_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 	}
 
 	if($selected_id) {
-		if(!Request::val('Embedded')) $templateCode = str_replace('<%%DVPRINT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="dvprint" name="dvprint_x" value="1" onclick="$j(\'form\').eq(0).prop(\'novalidate\', true); document.myform.reset(); return true;" title="' . html_attr($Translation['Print Preview']) . '"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print Preview'] . '</button>', $templateCode);
 		if($AllowUpdate)
 			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '<button type="submit" class="btn btn-success btn-lg" id="update" name="update_x" value="1" onclick="return testigos_validateData();" title="' . html_attr($Translation['Save Changes']) . '"><i class="glyphicon glyphicon-ok"></i> ' . $Translation['Save Changes'] . '</button>', $templateCode);
 		else

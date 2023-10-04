@@ -88,7 +88,6 @@
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%DESELECT_BUTTON%%>
-					<%%DVPRINT_BUTTON%%>
 					<%%DELETE_BUTTON%%>
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
@@ -123,9 +122,6 @@
 				setTimeout(AppGini.closeParentModal, 2000);
 			}
 
-
-			/* enable DV action buttons to float on scrolling down the form */
-			enable_dvab_floating();
 
 			if(!$j('.table_view').length || $j('[name=SelectedID]').val().length) {
 				AppGini.once({
